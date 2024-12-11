@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /vendor/
 node_modules/
 npm-debug.log
@@ -46,4 +45,4 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
->>>>>>> e54445a (Set up a fresh Laravel app)
+
