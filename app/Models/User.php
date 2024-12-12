@@ -19,8 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'sobrenome',
         'email',
+        'cpf',
+        'funcao',
+        'status',
         'password',
+        'user_id',
+        'unidade_id'
     ];
 
     /**
@@ -45,4 +51,35 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Relacionamento com a Unidade.
+     */
+    public function unidade()
+    {
+        return $this->belongsTo(Unidade::class);
+    }
+
+    /**
+     * Relacionamento com o usuário que criou este usuário.
+     */
+    public function criadoPor()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Relacionamento com os usuários que este usuário criou.
+     */
+    public function createdUsers()
+    {
+        return $this->hasMany(User::class, 'user_id');
+    }
+
+    //retorna nome completo
+    public function getFullNameAttribute()
+    {
+        return $this->name . ' ' . $this->sobrenome;
+    }
+
 }
