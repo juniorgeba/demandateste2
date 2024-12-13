@@ -10,11 +10,27 @@ class UnidadeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    /*public function index()
     {
         $unidades = Unidade::paginate(10);
         return view('unidades.index', compact('unidades'));
+    }*/
+
+    public function index(Request $request)
+    {
+        // Captura os parâmetros de busca e ordenação
+        $search = $request->get('search', '');
+        $sort = $request->get('sort', 'nome');
+        $order = $request->get('order', 'asc');
+
+        // Filtra e ordena as unidades
+        $unidades = Unidade::where('nome', 'like', '%' . $search . '%')
+            ->orderBy($sort, $order)
+            ->paginate(10);
+
+        return view('unidades.index', compact('unidades', 'search', 'sort', 'order'));
     }
+
 
     /**
      * Show the form for creating a new resource.

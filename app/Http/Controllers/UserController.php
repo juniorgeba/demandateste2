@@ -1,0 +1,122 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Unidade;
+use App\Models\User;
+use App\Notifications\SetPasswordNotification;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
+
+class UserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        // Captura os parâmetros de busca e ordenação
+        $search = $request->get('search', '');
+        $sort = $request->get('sort', 'name');
+        $order = $request->get('order', 'asc');
+
+        $users = User::where(function($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+        })
+            ->orderBy($sort, $order)
+            ->paginate(10);
+
+        return view('users.index', compact('users', 'search', 'sort', 'order'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $unidades = Unidade::all();
+        return view ('users.create', compact('unidades'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // Valida os dados de entrada
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'sobrenome' => 'nullable|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'cpf' => 'nullable|string|max:255|unique:users',
+            'funcao' => 'nullable|string|max:255',
+            'unidade_id' => 'required|exists:unidades,id'
+        ]);
+
+
+        $user = User::create([
+            'name' => ($request->name),
+            'sobrenome' => ($request->sobrenome),
+            'email' => $request->email,
+            'cpf' => $request->cpf,
+            'funcao' => $request->funcao,
+            'user_id' => auth()->user()->id,
+            'unidade_id' => $request->unidade_id,
+            'status' => 'ativo',
+            // Inicialmente, a senha é nula ou um valor aleatório até ser definida pelo usuário
+            'password' => bcrypt(Str::random(16)),
+        ]);
+
+        // Envia notificação para o usuário definir a senha
+        Notification::send($user, new SetPasswordNotification($user));
+
+        return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso. Um email foi enviado para definir a senha.');
+    }
+
+    public function show(User $user)
+    {
+        return view('users.show', compact('user'));
+    }
+
+    public function edit(User $user)
+    {
+        $unidades = Unidade::all();
+        return view('users.edit', compact('user', 'unidades'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'sobrenome' => 'nullable|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'cpf' => 'nullable|string|max:255|unique:users,cpf,' . $user->id,
+            'funcao' => 'nullable|string|max:255',
+            'status' => 'required|string|in:ativo,inativo',
+            'unidade_id' => 'required|exists:unidades,id'
+        ]);
+
+        $user->update([
+            'name' => ($request->name),
+            'sobrenome' => ($request->sobrenome),
+            'email' => $request->email,
+            'cpf' => $request->cpf,
+            'funcao' => $request->funcao,
+            'user_id' => auth()->user()->id,
+            'unidade_id' => $request->unidade_id,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso.');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'Usuário deletado com sucesso.');
+    }
+
+
+}

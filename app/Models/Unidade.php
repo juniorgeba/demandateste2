@@ -29,4 +29,17 @@ class Unidade extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    /**
+     * Set the nome attribute to uppercase before saving.
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setNomeAttribute($value)
+    {
+        if ($value !== null) {
+            $this->attributes['nome'] = mb_strtoupper($value);
+        }
+    }
 }

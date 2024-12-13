@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1 class="mb-4">Criar Nova Unidade</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -17,7 +15,7 @@
 
         <div class="card">
             <div class="card-header">
-                Formulário de Unidade
+                Cadastro de Unidade
             </div>
             <div class="card-body">
                 <form action="{{ route('unidades.store') }}" method="POST">
@@ -38,5 +36,5 @@
                 </form>
             </div>
         </div>
-    </div>
+
 @endsection
