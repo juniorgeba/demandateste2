@@ -58,6 +58,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="rg" class="form-label">RG</label>
+                            <input type="text" class="form-control" id="rg" name="rg" value="{{ old('rg') }}">
+                        </div>
+
+                        <div class="mb-3">
                             <label for="cpf" class="form-label">CPF</label>
                             <input type="text" class="form-control cpf" id="cpf" name="cpf" value="{{ old('cpf') }}">
                         </div>
@@ -109,6 +114,21 @@
                             </select>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="rg_responsavel" class="form-label">RG Responsável</label>
+                            <input type="text" class="form-control" id="rg_responsavel" name="rg_responsavel" value="{{ old('rg_responsavel') }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cpf_responsavel" class="form-label">CPF Responsável</label>
+                            <input type="text" class="form-control cpf" id="cpf_responsavel" name="cpf_responsavel" value="{{ old('cpf_responsavel') }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefone_responsavel" class="form-label">Telefone responsável</label>
+                            <input type="text" class="form-control phone" id="telefone_responsavel" name="telefone_responsavel" value="{{ old('telefone_responsavel') }}">
+                        </div>
+
 
                         <h5 class="mb-3 mt-4">Endereço</h5>
 
@@ -125,6 +145,11 @@
                         <div class="mb-3">
                             <label for="numero" class="form-label">Número</label>
                             <input type="text" class="form-control" id="numero" name="numero" value="{{ old('numero') }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="complemento" class="form-label">Complemento</label>
+                            <input type="text" class="form-control" id="complemento" name="complemento" value="{{ old('complemento') }}">
                         </div>
 
                         <div class="mb-3">

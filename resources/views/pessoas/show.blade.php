@@ -39,6 +39,10 @@
                             <td>{{ $pessoa->data_nascimento ? \Carbon\Carbon::parse($pessoa->data_nascimento)->format('d/m/Y') : '-' }}</td>
                         </tr>
                         <tr>
+                            <th>RG:</th>
+                            <td>{{ $pessoa->rg ?: '-' }}</td>
+                        </tr>
+                        <tr>
                             <th>CPF:</th>
                             <td>{{ $pessoa->cpf ?: '-' }}</td>
                         </tr>
@@ -90,6 +94,18 @@
                                 @endswitch
                             </td>
                         </tr>
+                        <tr>
+                            <th>RG do Responsável:</th>
+                            <td>{{ $pessoa->rg_responsavel ?: '-' }}</td>
+                        </tr>
+                        <tr>
+                            <th>CPF do Responsável:</th>
+                            <td>{{ $pessoa->cpf_responsavel ?: '-' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Telefone do Responsável:</th>
+                            <td>{{ $pessoa->telefone_responsavel ?: '-' }}</td>
+                        </tr>
                         </tbody>
                     </table>
 
@@ -108,6 +124,10 @@
                         <tr>
                             <th>Número:</th>
                             <td>{{ $pessoa->numero ?: '-' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Complemento:</th>
+                            <td>{{ $pessoa->complemento ?: '-' }}</td>
                         </tr>
                         <tr>
                             <th>Bairro:</th>
