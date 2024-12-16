@@ -82,4 +82,18 @@ class User extends Authenticatable
         return $this->name . ' ' . $this->sobrenome;
     }
 
+    public function setNameAttribute($value)
+    {
+        if ($value !== null) {
+            $this->attributes['name'] = mb_strtoupper($value);
+        }
+    }
+
+    public function setSobrenomeAttribute($value)
+    {
+        if ($value !== null) {
+            $this->attributes['sobrenome'] = mb_strtoupper($value);
+        }
+    }
+
 }

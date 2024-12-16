@@ -35,7 +35,7 @@
 
                         <div class="mb-3">
                             <label for="cpf" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" value="{{ old('cpf') }}">
+                            <input type="text" class="form-control cpf" id="cpf" name="cpf" value="{{ old('cpf') }}">
                         </div>
                     </div>
 
@@ -47,9 +47,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="funcao" class="form-label">Função</label>
+                            <label for="funcao" class="form-label">Perfil de acesso</label>
                             <select class="form-control" id="funcao" name="funcao">
-                                <option value="">Selecione a Função</option>
+                                <option value="">Selecione a Perfil</option>
                                 <option value="administrativo" {{ old('funcao') == 'administrativo' ? 'selected' : '' }}>Administrativo</option>
                                 <option value="tecnico" {{ old('funcao') == 'tecnico' ? 'selected' : '' }}>Técnico</option>
                                 <option value="coordenacao" {{ old('funcao') == 'coordenacao' ? 'selected' : '' }}>Coordenação</option>
@@ -77,5 +77,16 @@
             </form>
         </div>
     </div>
-
+@endsection
+@section('script')
+    <script>
+        //Mascaras
+        $(document).ready(function () {
+            $('.cep').mask('00000-000');
+            $('.phone_with_ddd').mask('(00) 0000-0000');
+            $('.cpf').mask('000.000.000-00', {reverse: true});
+            $('.money').mask('000.000.000.000.000,00', {reverse: true});
+            $('.money2').mask("#.##0,00", {reverse: true});
+        });
+    </script>
 @endsection

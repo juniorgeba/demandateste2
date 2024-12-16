@@ -23,7 +23,9 @@ class UserController extends Controller
 
         $users = User::where(function($query) use ($search) {
             $query->where('name', 'like', '%' . $search . '%')
-                ->orWhere('email', 'like', '%' . $search . '%');
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('funcao', 'like', '%' . $search . '%')
+                ->orWhere('status', 'like', '%' . $search . '%');
         })
             ->orderBy($sort, $order)
             ->paginate(10);
@@ -77,6 +79,10 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+
+
+        //dd($user);
+
         return view('users.show', compact('user'));
     }
 

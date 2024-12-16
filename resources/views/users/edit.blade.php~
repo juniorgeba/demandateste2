@@ -57,9 +57,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="funcao" class="form-label">Perfil de acesso</label>
+                            <label for="funcao" class="form-label">Função</label>
                             <select class="form-control" id="funcao" name="funcao">
-                                <option value="">Selecione a Perfil</option>
+                                <option value="">Selecione a Função</option>
                                 <option value="administrativo" {{ old('funcao', $user->funcao) == 'administrativo' ? 'selected' : '' }}>Administrativo</option>
                                 <option value="tecnico" {{ old('funcao', $user->funcao) == 'tecnico' ? 'selected' : '' }}>Técnico</option>
                                 <option value="coordenacao" {{ old('funcao', $user->funcao) == 'coordenacao' ? 'selected' : '' }}>Coordenação</option>

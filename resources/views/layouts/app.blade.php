@@ -390,6 +390,14 @@
                     </li>
 
                     <li class="nav-main-item">
+                        <a class="nav-main-link {{ request()->routeIs('pessoas.*') ? 'active' : '' }}" href="{{route('pessoas.index')}}">
+                            <i class="nav-main-link-icon fa fa-users"></i>
+                            <span class="nav-main-link-name">Pessoas</span>
+                            {{--<span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
+                        </a>
+                    </li>
+
+                    <li class="nav-main-item">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fa fa-puzzle-piece"></i>
                             <span class="nav-main-link-name">Dropdown</span>
@@ -636,5 +644,8 @@
   webpack is putting everything together at assets/_js/main/app.js
 -->
 <script src="{{ url('assets/js/dashmix.app.min.js')}}"></script>
+<script src="{{ url('assets/js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ url('assets/js/jquery.mask.min.js') }}"></script>
+@yield('script')
 </body>
 </html>

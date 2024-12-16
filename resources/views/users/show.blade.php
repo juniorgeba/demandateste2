@@ -1,0 +1,103 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Detalhes do Usuário</span>
+            <div>
+                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit"></i> Editar
+                </a>
+                <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <!-- Primeira Coluna - Dados Pessoais -->
+                <div class="col-md-6">
+                    <h5 class="mb-3">Detalhe</h5>
+
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th width="200">Nome Completo:</th>
+                            <td>{{ $user->name }} {{ $user->sobrenome }}</td>
+                        </tr>
+                        <tr>
+                            <th>E-mail:</th>
+                            <td>{{ $user->email }}</td>
+                        </tr>
+                        <tr>
+                            <th>CPF:</th>
+                            <td>{{ $user->cpf ?: '-' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Função:</th>
+                            <td>{{ ucfirst($user->funcao) }}</td>
+                        </tr>
+                        <tr>
+                            <th width="200">Unidade:</th>
+                            <td>{{ $user->unidade->nome ?? 'N/A' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status:</th>
+                            <td>
+                                    <span class="badge {{ $user->status === 'ativo' ? 'bg-success' : 'bg-danger' }}">
+                                        {{ ucfirst($user->status) }}
+                                    </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Segunda Coluna - Dados Institucionais -->
+                <div class="col-md-6">
+                    {{--<h5 class="mb-3">Dados Institucionais</h5>--}}
+
+                    <table class="table table-striped">
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <h5 class="mb-3">Informações do Sistema</h5>
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <th width="200">Cadastrado por:</th>
+                        <td>{{ $user->criadoPor->name ?? 'N/A' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Data de Cadastro:</th>
+                        <td>{{ $user->created_at->format('d/m/Y H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Última Atualização:</th>
+                        <td>{{ $user->updated_at->format('d/m/Y H:i:s') }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            @if(auth()->user()->can('delete', $user))
+                <div class="mt-4">
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline"
+                          onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Excluir Usuário
+                        </button>
+                    </form>
+                </div>
+            @endif
+        </div>
+    </div>
+@endsection
