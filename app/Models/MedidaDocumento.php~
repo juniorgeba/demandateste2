@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class MedidaDocumento extends Model
+{
+    protected $fillable = ['user_id', 'medida_id', 'documento', 'nome_original', 'mime_type', 'tamanho'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function medida()
+    {
+        return $this->belongsTo(Medida::class);
+    }
+}
