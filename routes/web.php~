@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DemandaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedidaController;
 use App\Http\Controllers\MedidaObservacaoController;
@@ -42,8 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('origens', OrigemController::class)->parameters(['origens' => 'origem']);
 
     Route::resource('tipos', TipoController::class);
-
-    Route::resource('demandas', DemandaController::class);
 
 
 

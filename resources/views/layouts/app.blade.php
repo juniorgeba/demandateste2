@@ -413,19 +413,32 @@
                     </li>
 
                     <li class="nav-main-item">
+                        <a class="nav-main-link {{ request()->routeIs('demandas.*') ? 'active' : '' }}" href="{{route('demandas.index')}}">
+                            <i class="nav-main-link-icon fa fa-pager"></i>
+                            <span class="nav-main-link-name">Demandas</span>
+                            {{--<span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
+                        </a>
+                    </li>
+
+                    <li class="nav-main-item">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                            <i class="nav-main-link-icon fa fa-puzzle-piece"></i>
-                            <span class="nav-main-link-name">Dropdown</span>
+                            <i class="nav-main-link-icon fa fa-cogs"></i>
+                            <span class="nav-main-link-name">Configurações</span>
                         </a>
                         <ul class="nav-main-submenu">
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="javascript:void(0)">
-                                    <span class="nav-main-link-name">Link #1</span>
+                                <a class="nav-main-link" href="{{ route('violencias.index') }}">
+                                    <span class="nav-main-link-name">Violências</span>
                                 </a>
                             </li>
                             <li class="nav-main-item">
-                                <a class="nav-main-link" href="javascript:void(0)">
-                                    <span class="nav-main-link-name">Link #2</span>
+                                <a class="nav-main-link" href="{{ route('origens.index') }}">
+                                    <span class="nav-main-link-name">Origens</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="{{ route('tipos.index') }}">
+                                    <span class="nav-main-link-name">Tipos</span>
                                 </a>
                             </li>
                         </ul>
