@@ -67,16 +67,21 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Motivo da Infração*</label>
-                            <input type="text" name="motivo_infracao" class="form-control"
-                                   value="{{ old('motivo_infracao', $medida->motivo_infracao) }}" required>
+                            <label for="motivo_infracao" class="form-label">Motivo da Infração*</label>
+                            <select id="motivo_infracao" name="motivo_infracao" class="form-control" required>
+                                <option value="{{ $medida->motivo_infracao }}">{{ $medida->motivo_infracao }}</option>
+                                <option value="furto" {{ old('motivo_infracao', $medida->motivo_infracao) == 'furto' ? 'selected' : '' }}>Furto</option>
+                                <option value="roubo" {{ old('motivo_infracao', $medida->motivo_infracao) == 'roubo' ? 'selected' : '' }}>Roubo</option>
+                                <option value="tráfico de drogas" {{ old('motivo_infracao', $medida->motivo_infracao) == 'tráfico de drogas' ? 'selected' : '' }}>Tráfico de Drogas</option>
+                                <option value="lesão corporal" {{ old('motivo_infracao', $medida->motivo_infracao) == 'lesão corporal' ? 'selected' : '' }}>Lesão Corporal</option>
+                                <option value="homicídio" {{ old('motivo_infracao', $medida->motivo_infracao) == 'homicídio' ? 'selected' : '' }}>Homicídio</option>
+                                <option value="porte ilegal de arma" {{ old('motivo_infracao', $medida->motivo_infracao) == 'porte ilegal de arma' ? 'selected' : '' }}>Porte Ilegal de Arma</option>
+                                <option value="vandalismo" {{ old('motivo_infracao', $medida->motivo_infracao) == 'vandalismo' ? 'selected' : '' }}>Vandalismo</option>
+                                <option value="ameaça" {{ old('motivo_infracao', $medida->motivo_infracao) == 'ameaça' ? 'selected' : '' }}>Ameaça</option>
+                                <option value="outro" {{ old('motivo_infracao', $medida->motivo_infracao) == 'outro' ? 'selected' : '' }}>Outro</option>
+                            </select>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Código do Motivo</label>
-                            <input type="text" name="cod_motivo_infracao" class="form-control"
-                                   value="{{ old('cod_motivo_infracao', $medida->cod_motivo_infracao) }}">
-                        </div>
                     </div>
 
                     <!-- Segunda Coluna - Informações Adicionais -->

@@ -78,6 +78,11 @@
                             </select>
                         </div>
 
+
+                        <div class="mb-3">
+                            <label for="cod_motivo_infracao" class="form-label">Código do Motivo</label>
+                            <input type="text" name="cod_motivo_infracao" class="form-control" value="{{ old('cod_motivo_infracao') }}">
+                        </div>
                     </div>
 
                     <!-- Segunda Coluna - Informações Adicionais -->

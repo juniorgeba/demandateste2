@@ -23,7 +23,6 @@ return new class extends Migration {
             $table->boolean('egresso')->default(false);
             $table->date('data_entrada_no_creas')->nullable();
             $table->string('motivo_infracao')->nullable();
-            $table->string('cod_motivo_infracao')->nullable();
             $table->boolean('possui_irmao_em_atedimento')->default(false);
             $table->string('local_armazenamento')->nullable();
             // Datas de controle

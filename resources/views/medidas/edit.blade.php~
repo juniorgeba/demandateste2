@@ -70,13 +70,7 @@
                             <label class="form-label">Motivo da Infração*</label>
                             <input type="text" name="motivo_infracao" class="form-control"
                                    value="{{ old('motivo_infracao', $medida->motivo_infracao) }}" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Código do Motivo</label>
-                            <input type="text" name="cod_motivo_infracao" class="form-control"
-                                   value="{{ old('cod_motivo_infracao', $medida->cod_motivo_infracao) }}">
-                        </div>
+                        </div>                        
                     </div>
 
                     <!-- Segunda Coluna - Informações Adicionais -->
@@ -260,31 +254,6 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            // Excluir observação
-            $('.delete-observacao').click(function() {
-                if (confirm('Tem certeza que deseja excluir esta observação?')) {
-                    const observacaoId = $(this).data('observacao-id');
-                    const row = $(this).closest('tr');
-
-                    $.ajax({
-                        url: `/medidas/observacao/${observacaoId}`,
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                row.remove();
-                            } else {
-                                alert('Erro ao excluir observação');
-                            }
-                        },
-                        error: function() {
-                            alert('Erro ao excluir observação');
-                        }
-                    });
-                }
-            });
 
             // Excluir documento
             $('.delete-documento').click(function() {
@@ -307,6 +276,47 @@
                         },
                         error: function() {
                             alert('Erro ao excluir documento');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Excluir observação
+            $('.delete-observacao').click(function() {
+                const button = $(this);
+                const observacaoId = button.data('observacao-id');
+                const row = button.closest('tr');
+
+                if (confirm('Tem certeza que deseja excluir esta observação?')) {
+                    $.ajax({
+                        url: `/medidas/observacao/${observacaoId}`,
+                        type: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                row.fadeOut(300, function() {
+                                    $(this).remove();
+
+                                    // Verifica se não há mais observações
+                                    if ($('.table tbody tr').length === 0) {
+                                        $('.table tbody').append(
+                                            '<tr><td colspan="4" class="text-center">Nenhuma observação registrada</td></tr>'
+                                        );
+                                    }
+                                });
+                            } else {
+                                alert(response.message || 'Erro ao excluir observação');
+                            }
+                        },
+                        error: function(xhr) {
+                            console.error('Erro:', xhr);
+                            alert('Erro ao excluir observação. Verifique o console para mais detalhes.');
                         }
                     });
                 }

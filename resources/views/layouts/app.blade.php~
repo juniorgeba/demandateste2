@@ -375,7 +375,7 @@
                         <a class="nav-main-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{route('dashboard')}}">
                             <i class="nav-main-link-icon fa fa-rocket"></i>
                             <span class="nav-main-link-name">Dashboard</span>
-                           {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
+                            <span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>
                         </a>
                     </li>
                     <li class="nav-main-heading">Heading</li>

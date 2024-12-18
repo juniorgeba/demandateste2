@@ -35,7 +35,7 @@
                             <td>{{ $medida->prazo_meses }}</td>
                         </tr>
                         <tr>
-                            <th>Data de Entrada:</th>
+                            <th>Data de Entrada no CREAS:</th>
                             <td>{{ \Carbon\Carbon::parse($medida->data_entrada_no_creas)->format('d/m/Y') }}</td>
                         </tr>
                         <tr>
