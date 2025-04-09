@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Medidas')
+
 @section('content')
     <div class="block block-rounded">
         <div class="block-header block-header-default">

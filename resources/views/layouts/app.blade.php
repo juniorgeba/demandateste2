@@ -13,7 +13,7 @@
     -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>DEMANDAS</title>
+    <title>CDC - @yield('title')</title>
 
     <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
     <meta name="author" content="pixelcave">
@@ -329,10 +329,10 @@
         <div class="bg-header-dark">
             <div class="content-header bg-white-5">
                 <!-- Logo -->
-                <a class="fw-semibold text-white tracking-wide" href="{{ route('dashboard') }}">
+                <a class="fw-semibold text-white tracking-wide text-center" href="{{ route('dashboard') }}">
 
                     <span class="smini-hidden">
-                Demandas</span>
+                CONTROLE DE DEMANDAS CREAS</span>
 
                 </a>
                 <!-- END Logo -->
@@ -342,9 +342,9 @@
                     <!-- Toggle Sidebar Style -->
                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                     <!-- Class Toggle, functionality initialized in Helpers.dmToggleClass() -->
-                    <button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="class-toggle" data-target="#sidebar-style-toggler" data-class="fa-toggle-off fa-toggle-on" onclick="Dashmix.layout('sidebar_style_toggle');Dashmix.layout('header_style_toggle');">
+                    {{--<button type="button" class="btn btn-sm btn-alt-secondary" data-toggle="class-toggle" data-target="#sidebar-style-toggler" data-class="fa-toggle-off fa-toggle-on" onclick="Dashmix.layout('sidebar_style_toggle');Dashmix.layout('header_style_toggle');">
                         <i class="fa fa-toggle-off" id="sidebar-style-toggler"></i>
-                    </button>
+                    </button>--}}
                     <!-- END Toggle Sidebar Style -->
 
                     <!-- Dark Mode -->
@@ -380,21 +380,7 @@
                     </li>
                     <li class="nav-main-heading">Heading</li>
 
-                    <li class="nav-main-item">
-                        <a class="nav-main-link {{ request()->routeIs('unidades.*') ? 'active' : '' }}" href="{{route('unidades.index')}}">
-                            <i class="nav-main-link-icon fa fa-rocket"></i>
-                            <span class="nav-main-link-name">Unidades</span>
-                            {{--<span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
-                        </a>
-                    </li>
 
-                    <li class="nav-main-item">
-                        <a class="nav-main-link {{ request()->routeIs('users.*') ? 'active' : '' }}" href="{{route('users.index')}}">
-                            <i class="nav-main-link-icon fa fa-users"></i>
-                            <span class="nav-main-link-name">Usuários</span>
-                            {{--<span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
-                        </a>
-                    </li>
 
                     <li class="nav-main-item">
                         <a class="nav-main-link {{ request()->routeIs('pessoas.*') ? 'active' : '' }}" href="{{route('pessoas.index')}}">
@@ -416,6 +402,22 @@
                         <a class="nav-main-link {{ request()->routeIs('demandas.*') ? 'active' : '' }}" href="{{route('demandas.index')}}">
                             <i class="nav-main-link-icon fa fa-pager"></i>
                             <span class="nav-main-link-name">Demandas</span>
+                            {{--<span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
+                        </a>
+                    </li>
+
+                    <li class="nav-main-item">
+                        <a class="nav-main-link {{ request()->routeIs('unidades.*') ? 'active' : '' }}" href="{{route('unidades.index')}}">
+                            <i class="nav-main-link-icon fa fa-rocket"></i>
+                            <span class="nav-main-link-name">Unidades</span>
+                            {{--<span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
+                        </a>
+                    </li>
+
+                    <li class="nav-main-item">
+                        <a class="nav-main-link {{ request()->routeIs('users.*') ? 'active' : '' }}" href="{{route('users.index')}}">
+                            <i class="nav-main-link-icon fa fa-users"></i>
+                            <span class="nav-main-link-name">Usuários</span>
                             {{--<span class="nav-main-link-badge badge rounded-pill bg-primary">3</span>--}}
                         </a>
                     </li>
@@ -656,7 +658,7 @@
                     Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://pixelcave.com" target="_blank">pixelcave</a>
                 </div>--}}
                 <div class="col-sm-12 order-sm-1 text-center ">
-                    <a class="fw-semibold" href="#" target="_blank">Vigillância Socioassistencial - Prefeitura São José dos Campos</a> &copy; <span data-toggle="year-copy"></span>
+                    <span class="" >Vigillância Socioassistencial - Prefeitura São José dos Campos</span> &copy; <span data-toggle="year-copy"></span>
                 </div>
             </div>
         </div>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Cadastro de Medida')
+
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -49,6 +51,23 @@
                         </div>
 
                         <div class="mb-3">
+                            <div class="form-check">
+                                <input type="checkbox" name="status" class="form-check-input" id="status"
+                                    {{ old('status') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="status">Aguardando Decisão Judicial - ADJ</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="natureza" class="form-label">Natureza</label>
+                            <select id="natureza" name="natureza" class="form-control">
+                                <option value="">Selecione um motivo</option>
+                                <option value="LA" {{ old('natureza') == 'LA' ? 'selected' : '' }}>LA</option>
+                                <option value="PSC" {{ old('natureza') == 'PSC' ? 'selected' : '' }}>PSC</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="prazo_meses" class="form-label">Prazo (meses)*</label>
                             <input type="number" name="prazo_meses" class="form-control" value="{{ old('prazo_meses') }}" required>
                         </div>
@@ -76,6 +95,11 @@
                                 <option value="fuga" {{ old('motivo_infracao') == 'fuga' ? 'selected' : '' }}>Fuga</option>
                                 <option value="outro" {{ old('motivo_infracao') == 'outro' ? 'selected' : '' }}>Outro</option>
                             </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cod_motivo_infracao" class="form-label">Código da infração</label>
+                            <input type="text" name="cod_motivo_infracao" class="form-control" value="{{ old('cod_motivo_infracao') }}">
                         </div>
 
                     </div>

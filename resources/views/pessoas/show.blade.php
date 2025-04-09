@@ -47,6 +47,10 @@
                             <td>{{ $pessoa->cpf ?: '-' }}</td>
                         </tr>
                         <tr>
+                            <th>Naturalidade:</th>
+                            <td>{{ $pessoa->naturalidade ?: '-' }}</td>
+                        </tr>
+                        <tr>
                             <th>E-mail:</th>
                             <td>{{ $pessoa->email ?: '-' }}</td>
                         </tr>

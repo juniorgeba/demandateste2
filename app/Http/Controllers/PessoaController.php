@@ -63,6 +63,7 @@ class PessoaController extends Controller
                 'max:14',
                 Rule::unique('pessoas')
             ],
+            'naturalidade' => 'nullable|string|max:255',
             'nome_mae' => 'nullable|string|max:255',
             'nome_pai' => 'nullable|string|max:255',
             'nome_responsavel' => 'nullable|string|max:255',
@@ -118,6 +119,7 @@ class PessoaController extends Controller
                 'max:14',
                 Rule::unique('pessoas')->ignore($pessoa->id)
             ],
+            'naturalidade' => 'nullable|string|max:255',
             'nome_mae' => 'nullable|string|max:255',
             'nome_pai' => 'nullable|string|max:255',
             'nome_responsavel' => 'nullable|string|max:255',

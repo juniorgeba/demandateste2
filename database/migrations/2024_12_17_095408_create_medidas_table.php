@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->foreignId('tecnico_user_id')->constrained('users')->onDelete('restrict');
             $table->foreignId('pessoa_id')->constrained('pessoas')->onDelete('restrict');
             // Campos principais
+            $table->string('natureza')->nullable();
             $table->integer('prazo_meses');
             $table->boolean('egresso')->default(false);
             $table->date('data_entrada_no_creas')->nullable();

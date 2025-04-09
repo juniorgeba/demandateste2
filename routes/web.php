@@ -26,16 +26,17 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('pessoas', App\Http\Controllers\PessoaController::class);
 
+    //Medidas
     Route::resource('medidas', MedidaController::class);
     Route::post('medidas/{medida}/observacao', [MedidaController::class, 'storeObservacao'])->name('medidas.observacao.store');
     Route::post('medidas/{medida}/documento', [MedidaController::class, 'storeDocumento'])->name('medidas.documento.store');
     Route::get('medidas/documento/{documento}/download', [MedidaController::class, 'downloadDocumento'])->name('medidas.documento.download');
     Route::put('medidas/{medida}/desligar', [MedidaController::class, 'desligar'])->name('medidas.desligar');
+    Route::delete('medidas/observacao/{observacao}', [MedidaObservacaoController::class, 'destroy'])->name('medidas.observacao.destroy');
 
+    //Documentos
     Route::get('documentos/{documento}/download', [MedidaDocumentoController::class, 'download'])->name('documentos.download');
     Route::delete('documentos/{documento}', [MedidaDocumentoController::class, 'destroy'])->name('documentos.destroy');
-
-    Route::delete('medidas/observacao/{observacao}', [MedidaObservacaoController::class, 'destroy'])->name('medidas.observacao.destroy');
 
     Route::resource('violencias', ViolenciaController::class);
 
@@ -44,8 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('tipos', TipoController::class);
 
     Route::resource('demandas', DemandaController::class);
-
-
 
 });
 

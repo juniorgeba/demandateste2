@@ -17,6 +17,7 @@ class Pessoa extends Model
         'data_nascimento',
         'rg',
         'cpf',
+        'naturalidade',
         'nome_mae',
         'nome_pai',
         'nome_responsavel',

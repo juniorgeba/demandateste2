@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+                            <label for="data_nascimento" class="form-label">Data de Nascimento*</label>
                             <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="{{ old('data_nascimento', $pessoa->data_nascimento) }}">
                         </div>
 
@@ -66,6 +66,11 @@
                         <div class="mb-3">
                             <label for="cpf" class="form-label">CPF</label>
                             <input type="text" class="form-control cpf" id="cpf" name="cpf" value="{{ old('cpf', $pessoa->cpf) }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="naturalidade" class="form-label">Naturalidade</label>
+                            <input type="text" class="form-control" id="naturalidade" name="naturalidade" value="{{ old('naturalidade', $pessoa->naturalidade) }}">
                         </div>
 
                         <div class="mb-3">

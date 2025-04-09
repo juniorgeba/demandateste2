@@ -15,6 +15,7 @@ class Medida extends Model
         'user_id',
         'unidade_id',
         'tecnico_user_id',
+        'natureeza',
         'pessoa_id',
         'prazo_meses',
         'egresso',

@@ -47,10 +47,4 @@ class Demanda extends Model
     {
         return $this->belongsTo(Violencia::class);
     }
-
-    public function denunciantes()
-    {
-        return $this->hasMany(DemandaDenunciante::class);
-    }
-
 }

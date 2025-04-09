@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMedidaRequest;
@@ -10,7 +13,6 @@ use App\Models\User;
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\MedidaRequest;
 use Illuminate\Support\Facades\Storage;
 
 class MedidaController extends Controller
@@ -64,6 +66,7 @@ class MedidaController extends Controller
                 'user_id' => auth()->id(),
                 'unidade_id' => auth()->user()->unidade_id,
                 'tecnico_user_id' => $request->tecnico_user_id,
+                'natureza' => $request->natureza,
                 'pessoa_id' => $request->pessoa_id,
                 'prazo_meses' => $request->prazo_meses,
                 'egresso' => $request->has('egresso'),
@@ -168,6 +171,7 @@ class MedidaController extends Controller
             // Atualizar dados básicos da medida
             $medida->update([
                 'tecnico_user_id' => $request->tecnico_user_id,
+                'natureza' => $request->natureza,
                 'pessoa_id' => $request->pessoa_id,
                 'prazo_meses' => $request->prazo_meses,
                 'egresso' => $request->has('egresso'),

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Demandas')
 
 @section('content')
     <div class="block block-rounded">

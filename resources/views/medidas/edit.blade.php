@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Edição de Medida')
 
 @section('content')
     @if ($errors->any())
@@ -55,6 +56,15 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="natureza" class="form-label">Natureza</label>
+                            <select id="natureza" name="natureza" class="form-control">
+                                <option value="{{ old('natureza', $medida->narureza) }}">{{ old('natureza', $medida->narureza) }}</option>
+                                <option value="LA" {{ old('natureza'), $medida->narureza == 'LA' ? 'selected' : '' }}>LA</option>
+                                <option value="PSC" {{ old('natureza'), $medida->narureza == 'PSC' ? 'selected' : '' }}>PSC</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Prazo (meses)*</label>
                             <input type="number" name="prazo_meses" class="form-control"
                                    value="{{ old('prazo_meses', $medida->prazo_meses) }}" required min="1">
@@ -80,6 +90,11 @@
                                 <option value="ameaça" {{ old('motivo_infracao', $medida->motivo_infracao) == 'ameaça' ? 'selected' : '' }}>Ameaça</option>
                                 <option value="outro" {{ old('motivo_infracao', $medida->motivo_infracao) == 'outro' ? 'selected' : '' }}>Outro</option>
                             </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cod_motivo_infracao" class="form-label">Código da infração</label>
+                            <input type="text" name="cod_motivo_infracao" class="form-control" value="{{ old('cod_motivo_infracao', $medida->cod_motivo_infracao) }}">
                         </div>
 
                     </div>

@@ -117,9 +117,7 @@ class DemandaController extends Controller
             'atribuido' => 'Atribuído'
         ];
 
-        $pessoas = Pessoa::orderBy('nome')->get();
-
-        return view('demandas.edit', compact('demanda', 'tipos', 'violencias', 'classificacoes', 'status_administrativos', 'pessoas'));
+        return view('demandas.edit', compact('demanda', 'tipos', 'violencias', 'classificacoes', 'status_administrativos'));
     }
 
     public function update(Request $request, Demanda $demanda)

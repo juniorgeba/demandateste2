@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('data_nascimento')->nullable();
             $table->string('rg')->nullable();
             $table->string('cpf')->nullable();
+            $table->string('naturalidade')->nullable();
             $table->string('nome_mae')->nullable();
             $table->string('nome_pai')->nullable();
             $table->string('nome_responsavel')->nullable();

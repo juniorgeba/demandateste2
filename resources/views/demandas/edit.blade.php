@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Edição de Demanda')
+
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -100,6 +102,44 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mb-3">
+                    <h5>Denunciantes</h5>
+                    <div id="denunciantes-container">
+                        @foreach($demanda->denunciantes as $index => $denunciante)
+                            <div class="denunciante">
+                                <select name="denunciantes[{{ $index }}][pessoa_id]" class="form-control">
+                                    <option value="">Selecione uma pessoa</option>
+                                    @foreach($pessoas as $pessoa)
+                                        <option value="{{ $pessoa->id }}" {{ $denunciante->pessoa_id == $pessoa->id ? 'selected' : '' }}>{{ $pessoa->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endforeach
+                    </div>
+                    <button type="button" onclick="addDenunciante()" class="btn btn-secondary">Adicionar Denunciante</button>
+                </div>
+                <script>
+                    let denuncianteCount = 1;
+
+                    function addDenunciante() {
+                        const container = document.getElementById('denunciantes-container');
+                        const newDenunciante = document.createElement('div');
+                        newDenunciante.classList.add('denunciante');
+                        newDenunciante.innerHTML = `
+            <select name="denunciantes[${denuncianteCount}][pessoa_id]" class="form-control">
+                <option value="">Selecione uma pessoa</option>
+                @foreach($pessoas as $pessoa)
+                        <option value="{{ $pessoa->id }}">{{ $pessoa->nome }}</option>
+                @endforeach
+                        </select>
+`;
+                        container.appendChild(newDenunciante);
+                        denuncianteCount++;
+                    }
+                </script>
+
+
 
                 <div class="mt-4">
                     <button type="submit" class="btn btn-primary">Atualizar Demanda</button>
